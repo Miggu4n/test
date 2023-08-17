@@ -1,4 +1,3 @@
-import { Impianto } from './types/actual'
 import { cleanDb } from './cleanDb'
 import { importAppuntamenti } from './importAppuntamenti'
 import { importUtenti } from './importUtenti'
@@ -7,6 +6,8 @@ import { importImpianti } from './importImpianti'
 const impianti: Impianto[] = require('./data/impianti.json')
 const appuntamenti = require('./data/appuntamenti.json')
 const utenti = require('./data/utenti.json')
+
+import { Impianto } from './types/actual'
 
 async function main() {
   console.time('import totale')
