@@ -1,5 +1,5 @@
 import { prisma } from '../../prisma'
-import { Curit } from '../../types/actual'
+import { Curit } from '../../types/impianto'
 
 export async function createImpianto(curit: Curit, responsabileId: string) {
   const targa =

@@ -4,7 +4,7 @@ import { createInterventi } from './createInterventi'
 import { createResponsabile } from './createResponsabile'
 import { createUbicazione } from './createUbicazione'
 
-import { Impianto } from '../../types/actual'
+import { Impianto } from '../../types/impianto'
 
 export async function importImpianti(impianti: Impianto[]) {
   console.time('import impianti')

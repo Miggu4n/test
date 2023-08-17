@@ -1,6 +1,6 @@
 import { prisma } from '../../prisma'
 import { createContatti } from './createContatti'
-import { Contatti, Responsabile } from '../../types/actual'
+import { Contatti, Responsabile } from '../../types/impianto'
 
 export async function createResponsabile(
   responsabile: Responsabile,

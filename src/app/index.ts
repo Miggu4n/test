@@ -8,7 +8,7 @@ const impianti: Impianto[] = require('../../data/impianti.json')
 const appuntamenti = require('../../data/appuntamenti.json')
 const utenti = require('../../data/utenti.json')
 
-import { Impianto } from '../types/actual'
+import { Impianto } from '../types/impianto'
 
 async function main() {
   console.time('import totale')

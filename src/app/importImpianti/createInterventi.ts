@@ -1,5 +1,5 @@
 import moment from 'moment'
-import { Generatore, Manutenzioni } from '../../types/actual'
+import { Generatore, Manutenzioni } from '../../types/impianto'
 import { prisma } from '../../prisma'
 import { Azioni, Periodicita } from '@prisma/client'
 function parseMonth(mese: string): number {
