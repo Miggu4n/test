@@ -1,5 +1,5 @@
-import { Curit } from './Curit'
-import { Ubicazione } from './Ubicazione'
+import { Curit } from './curit'
+import { Ubicazione } from './ubicazione'
 import { Contatti } from './contatti'
 import { Generatore } from './generatore'
 import { Manutenzioni } from './manutenzioni'
