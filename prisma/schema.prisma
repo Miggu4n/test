@@ -1,0 +1,148 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String         @id @unique @default(uuid())
+  nome         String         @unique
+  cognome      String
+  appuntamenti Appuntamento[]
+}
+
+model Responsabile {
+  id              String     @id @unique @default(uuid())
+  codice_fiscale  String?    @unique
+  cognome         String
+  nome            String
+  partita_iva     String?    @unique
+  ragione_sociale String?
+  codice_univoco  String?    @unique
+  annotazioni     String?
+  impianti        Impianto[]
+  contatti        Contatto[]
+}
+
+model Impianto {
+  id              String       @id @unique @default(uuid())
+  targa           String?      @unique
+  codice_impianto String?      @unique
+  chiave          String?
+  ubicazione      Ubicazione[]
+  generatori      Generatore[]
+  responsabile    Responsabile @relation(fields: [responsabileId], references: [id])
+  responsabileId  String
+
+  @@unique([codice_impianto, chiave])
+}
+
+model Contatto {
+  id             String       @id @unique @default(uuid())
+  tipo           TipoContatto
+  valore         String
+  note           String?
+  responsabile   Responsabile @relation(fields: [responsabileId], references: [id])
+  responsabileId String
+}
+
+model Ubicazione {
+  id         String   @id @unique @default(uuid())
+  provincia  String
+  comune     String
+  cap        String?
+  localita   String?
+  indirizzo  String
+  civico     String
+  piano      String?
+  interno    String?
+  scala      String?
+  maps       String?
+  note       String?
+  impianto   Impianto @relation(fields: [impiantoId], references: [id])
+  impiantoId String   @unique
+}
+
+model Generatore {
+  id                    String          @id @unique @default(uuid())
+  modello               String?
+  matricola             String?         @unique
+  formula_comfort       FormulaComfort?
+  prossimo_controllo    DateTime?
+  periodicita           Periodicita
+  prezzo_manutenzione   Float?
+  collaudo              DateTime?
+  idraulico             String?
+  causale_installazione String?
+  impianto              Impianto        @relation(fields: [impiantoId], references: [id])
+  impiantoId            String
+  interventi            Intervento[]
+}
+
+model Intervento {
+  id              Int        @id @unique @default(autoincrement())
+  azioni          Azioni[]
+  data_intervento DateTime
+  annotazioni     String?
+  Generatore      Generatore @relation(fields: [generatoreId], references: [id])
+  generatoreId    String
+}
+
+model Appuntamento {
+  id        String           @id @unique @default(uuid())
+  titolo    String
+  startDate DateTime
+  durata    Int
+  note      String?
+  tipo      TipoAppuntamento
+  user      User             @relation(fields: [userId], references: [id])
+  userId    String
+}
+
+// enums
+
+enum UserRole {
+  ADMIN
+  TECNICO
+  IMPIEGATO
+}
+
+enum Periodicita {
+  OGNI_ANNO
+  OGNI_DUE_ANNI
+  MAI
+}
+
+enum TipoContatto {
+  FISSO
+  MOBILE
+  EMAIL
+}
+
+enum Azioni {
+  PULIZIA
+  ANALISI_FUMI
+  GUASTO
+}
+
+enum FormulaComfort {
+  FC_5
+  FC_5_5
+  FC_5_3
+  FC_5_3_2
+  FC_5_5_5
+  FC_10
+}
+
+enum TipoAppuntamento {
+  GUASTO
+  MANUTENZIONE
+  COLLAUDO
+  ALTRO
+}
