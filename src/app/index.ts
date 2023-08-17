@@ -1,4 +1,5 @@
-import { cleanDb } from './cleanDb'
+import { cleanDb } from './utils/cleanDb'
+
 import { importAppuntamenti } from './importAppuntamenti'
 import { importUtenti } from './importUtenti'
 import { importImpianti } from './importImpianti'

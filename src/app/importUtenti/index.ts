@@ -1,4 +1,4 @@
-import { prisma } from '../prisma'
+import { prisma } from '../../prisma'
 
 export async function importUtenti(utenti: any[]) {
   console.time('import utenti')

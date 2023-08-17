@@ -1,10 +1,10 @@
-import { createGeneratori } from './importAppuntamenti/createGeneratori'
-import { createImpianto } from './importAppuntamenti/createImpianto'
-import { createInterventi } from './importAppuntamenti/createInterventi'
-import { createResponsabile } from './importAppuntamenti/createResponsabile'
-import { createUbicazione } from './importAppuntamenti/createUbicazione'
+import { createGeneratori } from './createGeneratori'
+import { createImpianto } from './createImpianto'
+import { createInterventi } from './createInterventi'
+import { createResponsabile } from './createResponsabile'
+import { createUbicazione } from './createUbicazione'
 
-import { Impianto } from './types/actual'
+import { Impianto } from '../types/actual'
 
 export async function importImpianti(impianti: Impianto[]) {
   console.time('import impianti')
