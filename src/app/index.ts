@@ -4,9 +4,9 @@ import { importAppuntamenti } from './importAppuntamenti'
 import { importUtenti } from './importUtenti'
 import { importImpianti } from './importImpianti'
 
-const impianti: Impianto[] = require('../../data/impianti.json')
-const appuntamenti = require('../../data/appuntamenti.json')
-const utenti = require('../../data/utenti.json')
+const impianti: Impianto[] = require('../../data/impiantos.json')
+const appuntamenti = require('../../data/appuntamentos.json')
+const utenti = require('../../data/users.json')
 
 import { Impianto } from '../types/impianto'
 
@@ -15,9 +15,9 @@ async function main() {
 
   await cleanDb()
 
-  await importImpianti(impianti)
   await importUtenti(utenti)
   await importAppuntamenti(appuntamenti)
+  await importImpianti(impianti)
 
   console.timeEnd('import totale')
 }

@@ -1,5 +1,5 @@
-import { prisma } from '../../prisma'
-import { Ubicazione } from '../../types/impianto'
+import { prisma } from '../../../prisma'
+import { Ubicazione } from '../../types/ubicazione'
 
 export async function createUbicazione(
   ubicazione: Ubicazione,

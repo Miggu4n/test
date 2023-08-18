@@ -1,8 +1,8 @@
 import { FormulaComfort, Periodicita } from '@prisma/client'
 
 import moment from 'moment'
-import { prisma } from '../../prisma'
-import { Generatore } from '../../types/impianto'
+import { prisma } from '../../../prisma'
+import { Generatore } from '../../types/generatore'
 
 function getFormulaComfort(formula_comfort: string): FormulaComfort {
   const fc = formula_comfort.split(' ')

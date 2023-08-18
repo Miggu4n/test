@@ -11,10 +11,16 @@ datasource db {
 }
 
 model User {
-  id           String         @id @unique @default(uuid())
-  nome         String         @unique
-  cognome      String
-  appuntamenti Appuntamento[]
+  id             String         @id @unique @default(uuid())
+  id_old         String         @unique
+  nome           String
+  cognome        String
+  email          String         @unique
+  password       String
+  ruolo          UserRole
+  isActive       Boolean?       @default(false)
+  appuntamenti   Appuntamento[]
+  codiceConferma String?        @unique
 }
 
 model Responsabile {

@@ -1,5 +1,5 @@
-import { prisma } from '../../prisma'
-import { Contatti } from '../../types/impianto'
+import { prisma } from '../../../prisma'
+import { Contatti } from '../../types/contatti'
 
 export async function createContatti(
   contatti: Contatti,
